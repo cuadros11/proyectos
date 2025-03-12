@@ -1,0 +1,161 @@
+#div1{
+    text-align: right;
+    background-color:white;
+    margin: auto;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+#mis1{
+    text-align: center;
+    color:coral;
+    font-size: 40px;
+    font-weight: 30px;
+}
+
+hr{
+    border: 1px solid coral;
+    width: 900px;
+    margin: auto;
+}
+
+
+#borharry{
+    border: 1px solid deepskyblue;
+    border-radius: 5px;
+    margin: 20px;
+    background-color: aliceblue;
+}
+
+#harry{
+    color:darkblue;
+    text-align: left;
+    margin-left: 20px;
+}
+
+#au0{
+    text-align: left;
+    margin-left: 15px;
+
+}
+
+#text0{
+    text-align: center;
+    border: 1px solid deepskyblue;
+    border-radius:5px;
+    margin: 20px;
+    margin-left: 15px;
+}
+
+#borprin{
+    border: 1px solid deepskyblue;
+    border-radius: 5px;
+    margin: 20px;
+    background-color: aliceblue;
+}
+
+#elprin{
+    color:darkblue;
+    text-align: left;
+    margin-left: 20px;
+}
+
+#au2{
+    text-align: left;
+    margin-left: 15px;
+
+}
+
+#text{
+    text-align: center;
+    border: 1px solid deepskyblue;
+    border-radius:5px;
+    margin: 20px;
+    margin-left: 15px;
+}
+
+#borcien{
+    border: 1px solid deepskyblue;
+    border-radius: 5px;
+    margin: 20px;
+    background-color: aliceblue;
+}
+
+#cien{
+    color:darkblue;
+    text-align: left;
+    margin-left: 20px;
+}
+
+#au3{
+    text-align: left;
+    margin-left: 15px;
+
+}
+
+#text1{
+    text-align: center;
+    border: 1px solid deepskyblue;
+    border-radius:5px;
+    margin: 20px;
+    margin-left: 15px;
+}
+
+#divp{ 
+    background-color: #FFF0BD;
+    margin: 15px;
+    border: 1px solid #FFF0BD;
+    border-radius: 5px; 
+    text-align: left;
+}
+
+
+#ul {
+    padding-left: 20px;
+    margin: 5px;
+    list-style-type: square;
+}
+
+#li {
+    margin-bottom: 5px;
+    color: #FFF0BD;
+}
+
+#a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.a:hover {
+    text-decoration: underline;
+    color: #0055aa;
+}
+
+#p1 {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+}
+#lectura{
+    color:royalblue;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    margin-top:30px;
+}
+
+#h1{
+    color:orangered;
+}
+
+
+#h2{
+    color:orangered;
+}
+
+#h3{
+    color:orangered;
+};
