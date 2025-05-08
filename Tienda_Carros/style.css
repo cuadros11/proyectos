@@ -562,5 +562,22 @@ h2 {
 }
 
 .footer {
-    margin-top: 0;
+    margin-top: 75px;
+}
+
+.sl{
+    text-decoration: none;
+    color: #93969b;
+    transition: color 0.3s;
+    padding: 7px 0;
+    background-color: #242424;
+}
+
+.lp{
+    text-decoration: none;
+    color: #93969b;
+    transition: color 0.3s;
+    padding: 7px;
+    background-color: #242424;
+    padding-left: 45px;
 }
