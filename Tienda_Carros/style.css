@@ -1,8 +1,7 @@
 * {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 img {
@@ -30,10 +29,7 @@ header {
 }
 
 .menu {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    align-items: center;
-    background-image: url(./img/carros-fondo.jpg);
+    background-image: url(/img/carros-fondo.jpg);
     background-size: 100% 390px;
     background-repeat: no-repeat;
 }
@@ -42,8 +38,11 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
-    padding: 0 170px;
+    padding: 0;
+}
+
+.list {
+    padding: 10px 0px;
 }
 
 .hiper {
@@ -67,8 +66,6 @@ header {
 .comercial h2 {
     color: #fdd10c;
     padding-left: 90px;
-    font-size: 28px;
-    padding: 0;
 }
 
 .usuario {
@@ -86,8 +83,8 @@ header {
 }
 
 .mas {
-    padding: 50px 170px;
-    padding-bottom: 80px;
+    padding: 0px 170px;
+    padding-bottom: 50px;
 }
 
 .mas h1 {
@@ -101,10 +98,10 @@ header {
 
 .flarga {
     position: absolute;
-    height: 210px;
+    height: 160px;
     width: 100px;
-    top: 170px;
-    left: 110px;
+    top: 215px;
+    left: 90px;
 }
 
 .list1 {
@@ -235,14 +232,14 @@ header {
     grid-template-rows: 1fr 1fr;
 }
 
-.fila1{
+.fila1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.fila2{
+.fila2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -250,96 +247,96 @@ header {
     align-items: center;
 }
 
-.imagen{
+.imagen {
     width: 230px;
     height: 160px;
-    background-image: url(./img/carro.jpg);
+    background-image: url(/img/carro.jpg);
     object-fit: cover;
     background-repeat: no-repeat;
 }
 
-.imagen2{
+.imagen2 {
     width: 260px;
     height: 170px;
-    background-image: url(./img/carro2.png);
+    background-image: url(/img/carro2.png);
     object-fit: cover;
     background-repeat: no-repeat;
 }
 
-.imagen3{
+.imagen3 {
     width: 240px;
     height: 160px;
-    background-image: url(./img/carro3.png);
+    background-image: url(/img/carro3.png);
     object-fit: cover;
     background-repeat: no-repeat;
 }
 
-.imagen4{
+.imagen4 {
     width: 230px;
     height: 160px;
-    background-image: url(./img/carro4.jpg);
+    background-image: url(/img/carro4.jpg);
     object-fit: cover;
     background-repeat: no-repeat;
 }
 
-.texto{
+.texto {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.precio{
+.precio {
     display: inline-block;
-      background-color: #FFD700; 
-      color: white;
-      font-weight: bold;
-      padding: 10px 20px;
-      clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
-      font-family: sans-serif;
+    background-color: #FFD700;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+    font-family: sans-serif;
 }
 
-.preciod{
+.preciod {
     display: inline-block;
-      background-color: #FFD700; 
-      color: white;
-      font-weight: bold;
-      padding: 10px 20px;
-      clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
-      font-family: sans-serif;
+    background-color: #FFD700;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+    font-family: sans-serif;
 }
 
-.preciod h5{
-    color:#333;
+.preciod h5 {
+    color: #333;
 }
 
-.textogris{
+.textogris {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
 }
 
-.icon-group{
+.icon-group {
     color: #a9a9a9;
     display: flex;
     align-items: center;
     font-size: 15px;
 }
 
-.carro{
+.carro {
     display: flex;
     flex-direction: column;
 }
 
-.botom{
+.botom {
     display: flex;
     justify-content: center;
     padding: 100px 0;
 }
 
-.boton{
-    background-color: #FFD000; 
-    color: white; 
+.boton {
+    background-color: #FFD000;
+    color: white;
     font-weight: bold;
     padding: 12px 28px;
     border: none;
@@ -351,94 +348,94 @@ header {
 }
 
 .section {
-    background: url(./img/carrofondo2.jpg) no-repeat center center/cover;
+    background: url(/img/carrofondo2.jpg) no-repeat center center/cover;
     color: white;
     position: relative;
-  }
+}
 
-  .stats-overlay {
+.stats-overlay {
     background-color: rgba(0, 0, 0, 0.6);
     padding: 100px 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-  }
+}
 
-  .stat {
+.stat {
     display: flex;
     align-items: center;
     gap: 12px;
     margin: 20px;
-  }
+}
 
-  .stat span{
+.stat span {
     font-size: 36px;
-  }
+}
 
-  .material-symbols-outlined {
+.material-symbols-outlined {
     font-size: 40px;
     margin-bottom: 10px;
     display: block;
-  }
+}
 
-.stat-texto{
+.stat-texto {
     display: flex;
     flex-direction: column;
 }
 
-  .stat-numero {
+.stat-numero {
     font-size: 48px;
     font-weight: bold;
-  }
+}
 
-  .stat-peq {
+.stat-peq {
     font-size: 14px;
     text-transform: uppercase;
     opacity: 0.8;
-  }
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .stats-overlay {
-      flex-direction: column;
+        flex-direction: column;
     }
-  }
+}
 
-  .ultima-parte{
+.ultima-parte {
     padding: 0 170px;
-  }
+}
 
-  h2 {
+h2 {
     font-size: 28px;
-    padding: 40px 0; 
-    }
+    padding: 40px 0;
+}
 
-  .news-container {
+.news-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-  }
+    gap: 125px;
+}
 
-  .card {
+.card {
     width: calc(28% - 0px);
     border: 1px solid #eee;
     border-radius: 6px;
     overflow: hidden;
     background: #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  }
+}
 
-  .card-image {
+.card-image {
     position: relative;
-  }
+}
 
-  .card-image img {
+.card-image img {
     width: 100%;
     height: 230px;
     display: block;
-  }
+}
 
-  .tag {
+.tag {
     position: absolute;
     top: -28px;
     left: -50px;
@@ -449,9 +446,9 @@ header {
     transform: rotate(-45deg);
     transform-origin: right;
     font-size: 12px;
-  }
+}
 
-  .video-icon {
+.video-icon {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -460,57 +457,57 @@ header {
     padding: 4px 6px;
     border-radius: 4px;
     font-size: 12px;
-  }
+}
 
-  .card-content {
+.card-content {
     padding: 15px;
-  }
+}
 
-  .card-title {
+.card-title {
     font-size: 16px;
     margin-bottom: 10px;
     font-weight: bold;
-  }
+}
 
-  .card-meta {
+.card-meta {
     display: flex;
     align-items: center;
     font-size: 13px;
     color: #666;
     gap: 12px;
-  }
+}
 
-  .card-meta span {
+.card-meta span {
     display: flex;
     align-items: center;
     gap: 4px;
-  }
+}
 
-  .material-symbols-outlined {
+.material-symbols-outlined {
     font-size: 16px;
-  }
+}
 
-  @media (max-width: 1024px) {
+@media (max-width: 1024px) {
     .card {
-      width: calc(50% - 20px);
+        width: calc(50% - 20px);
     }
-  }
+}
 
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
     .card {
-      width: 100%;
+        width: 100%;
     }
-  }
+}
 
-  .footer {
+.footer {
     background-color: #111;
     color: #ccc;
     padding: 20px 170px;
     font-family: Arial, sans-serif;
     font-size: 14px;
-  }
-  
-  .footer-top {
+}
+
+.footer-top {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -518,15 +515,15 @@ header {
     border-bottom: 1px solid #333;
     padding-bottom: 15px;
     margin-bottom: 15px;
-  }
-  
-  .search-input {
+}
+
+.search-input {
     padding: 8px;
     border: none;
     border-radius: 3px;
-  }
-  
-  .search-button {
+}
+
+.search-button {
     padding: 8px 10px;
     margin-left: 5px;
     background-color: #333;
@@ -534,36 +531,36 @@ header {
     border: none;
     border-radius: 3px;
     cursor: pointer;
-  }
-  
-  .footer-nav a {
+}
+
+.footer-nav a {
     color: #ccc;
     margin-left: 15px;
     text-decoration: none;
-  }
-  
-  .footer-nav a:hover {
+}
+
+.footer-nav a:hover {
     color: white;
-  }
-  
-  .footer-bottom {
+}
+
+.footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-  }
-  
-  .social-icons a {
+}
+
+.social-icons a {
     color: #ccc;
     margin-left: 10px;
     font-size: 16px;
     text-decoration: none;
-  }
-  
-  .social-icons a:hover {
+}
+
+.social-icons a:hover {
     color: white;
-  }
-  
-  .footer {
-    margin-top: 0;     
-  }
+}
+
+.footer {
+    margin-top: 0;
+}
