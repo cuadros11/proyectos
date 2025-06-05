@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <div class="container">
+        <div class="imagen">
+            <img src="/img/pokemon.png" alt="">
+        </div>
+        <div class="stats">
+            <div class="descripcion">
+                <h1 id="titulo"></h1>
+                <h1 id="ids"></h1>
+                <h3 id="altura"></h3>
+                <h3 id="peso"></h3>
+                <h1 id="hab"></h1>
+
+                <img src="" id="pok" alt="">
+                <img src="" id="poks" alt="">
+                
+            </div>
+            <div class="descripcion1">
+                <h2>Estadísticas</h2>
+                <div id="estadisticas"></div>
+                <div>
+                <h1>Tipos</h1>
+                <h2 id="tipos"></h2>
+                <h1>Debilidades</h1>
+                <h2 id="debilidades"></h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function getRandomPokemonId() {
+            return Math.floor(Math.random() * 400) + 1;
+        }
+        const typeColors = {
+            normal: "#A8A77A",
+            fire: "#EE8130",
+            water: "#6390F0",
+            electric: "#F7D02C",
+            grass: "#7AC74C",
+            ice: "#96D9D6",
+            fighting: "#C22E28",
+            poison: "#A33EA1",
+            ground: "#E2BF65",
+            flying: "#A98FF3",
+            psychic: "#F95587",
+            bug: "#A6B91A",
+            rock: "#B6A136",
+            ghost: "#735797",
+            dragon: "#6F35FC",
+            dark: "#705746",
+            steel: "#B7B7CE",
+            fairy: "#D685AD"
+        };
+
+        
+document.addEventListener("DOMContentLoaded", async () => {
+    const randomPokemon = getRandomPokemonId();
+    let res = await axios.get("https://pokeapi.co/api/v2/pokemon/" + randomPokemon)
+    console.log(res);
+    document.getElementById("titulo").textContent = res.data.name
+    document.getElementById("ids").textContent = "#" + res.data.id
+    document.getElementById("altura").textContent = "altura: " + res.data.height + "cm"
+    document.getElementById("peso").textContent = "peso: " + res.data.weight
+
+    document.getElementById("pok").src = res.data.sprites.other.home.front_default
+    document.getElementById("poks").src = res.data.sprites.other.showdown.front_default
+
+   
+    document.getElementById("tipos").innerHTML = "";
+    document.getElementById("debilidades").innerHTML = "";
+
+    
+    res.data.types.forEach((item) => {
+        const typeName = item.type.name;
+        const color = typeColors[typeName] || "#000";
+        document.getElementById("tipos").innerHTML += `<button id="boton" style="background-color:${color}">${typeName}</button>`
+    });
+
+    
+    let tipos = res.data.types;
+    let debilidadesSet = new Set();
+
+    for (let tipo of tipos) {
+        let tipoRes = await axios.get(tipo.type.url);
+        let debilidades = tipoRes.data.damage_relations.double_damage_from;
+        debilidades.forEach(d => debilidadesSet.add(d.name));
+    }
+    debilidadesSet.forEach((item) => {
+        const color = typeColors[item] || "#000";
+        document.getElementById("debilidades").innerHTML += `<button id="boton" style="background-color:${color}">${item}</button>`;
+    });
+
+    
+    const statsContainer = document.getElementById("estadisticas");
+    statsContainer.innerHTML = ""; 
+    res.data.stats.forEach(stat => {
+        const nombre = stat.stat.name;
+        const valor = stat.base_stat;
+        statsContainer.innerHTML += `
+            <div style="margin-bottom:8px;">
+                <span style="display:inline-block;width:90px;text-transform:capitalize;">${nombre}</span>
+                <div style="display:inline-block;vertical-align:middle;width:200px;height:18px;background:#eee;border-radius:8px;overflow:hidden;">
+                    <div style="width:${valor > 150 ? 150 : valor}px;height:100%;background:#3267b2;"></div>
+                </div>
+                <span style="margin-left:8px;">${valor}</span>
+            </div>
+        `;
+    });
+
+    document.getElementById("hab").textContent = "habilidad: " + res.data.abilities[0].ability.name
+});
+
+    </script>
+
+</body >
+
+</html >
