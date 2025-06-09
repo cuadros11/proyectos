@@ -12,28 +12,32 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <div class="container">
         <div class="imagen">
-            <img src="./img/pokemon.png" alt="">
+            <img src="/img/pokemon.png" alt="" style="height: 180px;">
         </div>
         <div class="stats">
             <div class="descripcion">
-                <h1 id="titulo"></h1>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <h1 id="titulo"></h1><img src="" id="poks" alt="">
+                </div>
                 <h1 id="ids"></h1>
                 <h3 id="altura"></h3>
                 <h3 id="peso"></h3>
                 <h1 id="hab"></h1>
 
                 <img src="" id="pok" alt="">
-                <img src="" id="poks" alt="">
-                
+
+
             </div>
             <div class="descripcion1">
-                <h2>Estadísticas</h2>
-                <div id="estadisticas"></div>
                 <div>
-                <h1>Tipos</h1>
-                <h2 id="tipos"></h2>
-                <h1>Debilidades</h1>
-                <h2 id="debilidades"></h2>
+                    <h2>Estadísticas</h2>
+                    <div id="estadisticas"></div>
+                </div>
+                <div>
+                    <h1>Tipos</h1>
+                    <h2 id="tipos"></h2>
+                    <h1>Debilidades</h1>
+                    <h2 id="debilidades"></h2>
                 </div>
             </div>
 
@@ -64,66 +68,75 @@
             fairy: "#D685AD"
         };
 
-        
-document.addEventListener("DOMContentLoaded", async () => {
-    const randomPokemon = getRandomPokemonId();
-    let res = await axios.get("https://pokeapi.co/api/v2/pokemon/" + randomPokemon)
-    console.log(res);
-    document.getElementById("titulo").textContent = res.data.name
-    document.getElementById("ids").textContent = "#" + res.data.id
-    document.getElementById("altura").textContent = "altura: " + res.data.height + "cm"
-    document.getElementById("peso").textContent = "peso: " + res.data.weight
 
-    document.getElementById("pok").src = res.data.sprites.other.home.front_default
-    document.getElementById("poks").src = res.data.sprites.other.showdown.front_default
+        document.addEventListener("DOMContentLoaded", async () => {
+            const randomPokemon = getRandomPokemonId();
+            let res = await axios.get("https://pokeapi.co/api/v2/pokemon/" + randomPokemon)
+            console.log(res);
+            document.getElementById("titulo").textContent = res.data.name
+            document.getElementById("ids").textContent = "#" + res.data.id
+            document.getElementById("altura").textContent = "altura: " + res.data.height + "cm"
+            document.getElementById("peso").textContent = "peso: " + res.data.weight
 
-   
-    document.getElementById("tipos").innerHTML = "";
-    document.getElementById("debilidades").innerHTML = "";
+            document.getElementById("pok").src = res.data.sprites.other.dream_world.front_default
+            document.getElementById("poks").src = res.data.sprites.other.showdown.front_default
 
-    
-    res.data.types.forEach((item) => {
-        const typeName = item.type.name;
-        const color = typeColors[typeName] || "#000";
-        document.getElementById("tipos").innerHTML += `<button id="boton" style="background-color:${color}">${typeName}</button>`
-    });
 
-    
-    let tipos = res.data.types;
-    let debilidadesSet = new Set();
+            document.getElementById("tipos").innerHTML = "";
+            document.getElementById("debilidades").innerHTML = "";
 
-    for (let tipo of tipos) {
-        let tipoRes = await axios.get(tipo.type.url);
-        let debilidades = tipoRes.data.damage_relations.double_damage_from;
-        debilidades.forEach(d => debilidadesSet.add(d.name));
-    }
-    debilidadesSet.forEach((item) => {
-        const color = typeColors[item] || "#000";
-        document.getElementById("debilidades").innerHTML += `<button id="boton" style="background-color:${color}">${item}</button>`;
-    });
 
-    
-    const statsContainer = document.getElementById("estadisticas");
-    statsContainer.innerHTML = ""; 
-    res.data.stats.forEach(stat => {
-        const nombre = stat.stat.name;
-        const valor = stat.base_stat;
-        statsContainer.innerHTML += `
-            <div style="margin-bottom:8px;">
-                <span style="display:inline-block;width:90px;text-transform:capitalize;">${nombre}</span>
-                <div style="display:inline-block;vertical-align:middle;width:200px;height:18px;background:#eee;border-radius:8px;overflow:hidden;">
-                    <div style="width:${valor > 150 ? 150 : valor}px;height:100%;background:#3267b2;"></div>
-                </div>
-                <span style="margin-left:8px;">${valor}</span>
+            res.data.types.forEach((item) => {
+                const typeName = item.type.name;
+                const color = typeColors[typeName] || "#000";
+                document.getElementById("tipos").innerHTML += `<button id="boton" style="background-color:${color}">${typeName}</button>`
+            });
+
+
+            let tipos = res.data.types;
+            let debilidadesSet = new Set();
+
+            for (let tipo of tipos) {
+                let tipoRes = await axios.get(tipo.type.url);
+                let debilidades = tipoRes.data.damage_relations.double_damage_from;
+                debilidades.forEach(d => debilidadesSet.add(d.name));
+            }
+            debilidadesSet.forEach((item) => {
+                const color = typeColors[item] || "#000";
+                document.getElementById("debilidades").innerHTML += `<button id="boton" style="background-color:${color}">${item}</button>`;
+            });
+
+
+            const statsContainer = document.getElementById("estadisticas");
+            statsContainer.innerHTML = "";
+            res.data.stats.forEach(stat => {
+                const nombre = stat.stat.name;
+                const valor = stat.base_stat;
+                statsContainer.innerHTML += `
+        <div class="stat-row">
+            <span class="stat-name">${nombre}</span>
+            <div class="stat-bar-bg">
+                <div class="stat-bar" style="width:${valor > 150 ? 150 : valor}px"></div>
             </div>
-        `;
-    });
+            <span class="stat-value">${valor}</span>
+        </div>
+    `;
+            });
 
-    document.getElementById("hab").textContent = "habilidad: " + res.data.abilities[0].ability.name
-});
+            document.getElementById("hab").textContent = "habilidad: " + res.data.abilities[0].ability.name
+
+            const descripcionDiv = document.querySelector('.descripcion');
+            const typeNames = res.data.types.map(t => t.type.name);
+            if (typeNames.length === 1) {
+                descripcionDiv.style.background = typeColors[typeNames[0]] || "#ffcb00";
+            } else {
+                const gradientColors = typeNames.map(t => typeColors[t] || "#ffcb00").join(', ');
+                descripcionDiv.style.background = `linear-gradient(135deg, ${gradientColors})`;
+            }
+        });
 
     </script>
 
-</body >
+</body>
 
-</html >
+</html>
