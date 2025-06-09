@@ -4,6 +4,13 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body{
+    background-image: url('/img/gif.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
 .imagen {
     height: 200px;
     display: flex;
