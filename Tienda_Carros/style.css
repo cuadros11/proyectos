@@ -391,183 +391,6 @@ header {
   opacity: 0.8;
 }
 
-@media (max-width: 768px) {
-  .stats-overlay {
-      flex-direction: column;
-  }
-}
-
-.ultima-parte {
-  padding: 0 170px;
-}
-
-h2 {
-  font-size: 28px;
-  padding: 40px 0;
-}
-
-.news-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.card {
-  border: 1px solid #eee;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.card-image {
-  position: relative;
-}
-
-.card-image img {
-  width: 100%;
-  height: 230px;
-  display: block;
-}
-
-.tag {
-  position: absolute;
-  top: -28px;
-  left: -50px;
-  background-color: #ffcc00;
-  color: white;
-  padding: 10px 25px;
-  font-weight: bold;
-  transform: rotate(-45deg);
-  transform-origin: right;
-  font-size: 12px;
-}
-
-.video-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #000;
-  color: white;
-  padding: 4px 6px;
-  border-radius: 4px;
-  font-size: 12px;
-}
-
-.card-content {
-  padding: 15px;
-}
-
-.card-title {
-  font-size: 16px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.card-meta {
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-  color: #666;
-  gap: 12px;
-}
-
-.card-meta span {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.material-symbols-outlined {
-  font-size: 16px;
-}
-
-@media (max-width: 600px) {
-  .card {
-      width: 100%;
-  }
-}
-
-.footer {
-  background-color: #111;
-  color: #ccc;
-  padding: 20px 170px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
-
-.footer-top {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #333;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
-
-.search-input {
-  padding: 8px;
-  border: none;
-  border-radius: 3px;
-}
-
-.search-button {
-  padding: 8px 10px;
-  margin-left: 5px;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.footer-nav a {
-  color: #ccc;
-  margin-left: 15px;
-  text-decoration: none;
-}
-
-.footer-nav a:hover {
-  color: white;
-}
-
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.social-icons a {
-  color: #ccc;
-  margin-left: 10px;
-  font-size: 16px;
-  text-decoration: none;
-}
-
-.social-icons a:hover {
-  color: white;
-}
-
-.footer {
-  margin-top: 75px;
-}
-
-.sl{
-  text-decoration: none;
-  color: #93969b;
-  transition: color 0.3s;
-  padding: 7px 0;
-  background-color: #242424;
-}
-
-.lp{
-  text-decoration: none;
-  color: #93969b;
-  transition: color 0.3s;
-  padding: 7px;
-  background-color: #242424;
-  padding-left: 45px;
-}
-
 @media(max-width: 1600px){
   .flechita{
     padding: 10px;
@@ -770,6 +593,109 @@ h2 {
     margin: 10px 0;
   }
 }
+ .stats-overlay {
+      flex-direction: column;
+  }
+}
+
+.ultima-parte {
+  padding: 0 170px;
+}
+
+h2 {
+  font-size: 28px;
+  padding: 40px 0;
+}
+
+.news-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.card-image {
+  position: relative;
+}
+
+.card-image img {
+  width: 100%;
+  height: 230px;
+  display: block;
+}
+
+.tag {
+  position: absolute;
+  top: -28px;
+  left: -50px;
+  background-color: #ffcc00;
+  color: white;
+  padding: 10px 25px;
+  font-weight: bold;
+  transform: rotate(-45deg);
+  transform-origin: right;
+  font-size: 12px;
+}
+
+.video-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #000;
+  color: white;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #666;
+  gap: 12px;
+}
+
+.card-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.material-symbols-outlined {
+  font-size: 16px;
+}
+.selectionb::after {
+    display: none;
+  }
+}
+  .fondo {
+    padding-top: 20px;
+  }
+
+  .add {
+    margin: 10px auto;
+  }
+
+  .cars {
+    bottom: 40px;
+  }
+}
+
 
 @media (max-width: 576px) {
   .comercial h1 {
@@ -815,27 +741,6 @@ h2 {
     background-position: center;
   }
 }
-
-@media (max-width: 768px) {
-  .selectionb::after {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .fondo {
-    padding-top: 20px;
-  }
-
-  .add {
-    margin: 10px auto;
-  }
-
-  .cars {
-    bottom: 40px;
-  }
-}
-
 @media (max-width: 1140px) {
   .fondo {
       background-size: cover;
