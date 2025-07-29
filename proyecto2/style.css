@@ -1,0 +1,93 @@
+.body{
+    background-color: #09122C;
+}
+.contenedor{
+    border: 50px solid #09122C;
+    background-color: #09122C;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color:white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+.contenedor-conciertos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 300px);
+    flex: 3;
+}
+
+.card{
+        background-size: cover;
+        text-align: center;
+        display: flex;
+        align-items: end;
+        padding: 15px;
+        border-radius: 10px;
+}
+
+.textos{
+    display: flex;
+        padding: 10px;
+        height: 90;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 90%;
+        font-size: 25px;
+}
+
+.textos h3{
+    font-size: 1em;
+    margin: 0;
+}
+
+.textos p{
+    font-size: 0.8em;
+
+}
+
+.banner{
+    flex: 1;
+    background-size: cover;
+    padding: 10px; 
+    text-align: center;
+    border-radius: 10px;
+    align-items: center;
+    margin: 10px; 
+    height: 580px;
+}
+
+.banner h3{
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.banner ul {
+    list-style: none;
+    padding: 0;
+}
+
+.banner li {
+    font-size: 1.5em;
+    margin: 40px;
+}
+
+.boton {
+    background-color: #FFD700;
+    color: black;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+}
