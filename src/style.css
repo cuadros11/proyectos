@@ -1,0 +1,258 @@
+.app {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #359469;
+  color: #fff;
+  padding: 18px 0;
+  text-align: center;
+  margin-bottom: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+.colortitulo {
+  background: #359469;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px 8px 0 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 0 0 8px 8px;
+}
+
+.input-group input,
+.input-group select {
+  padding: 8px 12px;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.input-group .buttonr {
+  padding: 10px 0;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.input-group .buttonr:hover {
+  background: #277a5e;
+}
+
+.alert {
+  padding: 10px 16px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.alert-danger {
+  background: #ffeaea;
+  color: #c62828;
+  border: 1px solid #e57373;
+}
+
+.alert-success {
+  background: #eaffea;
+  color: #2e7d32;
+  border: 1px solid #81c784;
+}
+
+/* Modal */
+.modal-intro {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.intro {
+  background: #fff;
+  border-radius: 8px;
+  min-width: 320px;
+  max-width: 95vw;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.btn-close {
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  color: #fff;
+  margin-left: auto;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-close:hover {
+  color: #c62828;
+}
+
+/* Boletas circulares */
+.cant-boletas {
+  margin: 24px 0;
+  padding: 18px 8px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cant-boletas > div {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.cant-boletas button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  margin: 4px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;
+  background: #359469;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+}
+
+.cant-boletas button:hover {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+/* Estados de boleta */
+.cant-boletas button.pagada {
+  background: #00e676 !important;
+  color: #fff;
+}
+
+.cant-boletas button.apartada {
+  background: #e53935 !important;
+  color: #fff;
+}
+
+.cant-boletas button.ganadora {
+  background: #ffd600 !important;
+  color: #222;
+}
+
+/* Contenedor de información */
+.cont-informacion {
+  background: #fff;
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.cont-informacion h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: #359469;
+}
+
+.cont-acciones {
+  background: #fff;
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.titulo-info {
+  font-size: 1.1rem;
+  color: #359469;
+  margin-bottom: 10px;
+}
+
+.cuerpo-acciones {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 4px;
+  background: #359469;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #277a5e;
+}
+
+.contenedor {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 0 12px;
+}
+
+@media (max-width: 600px) {
+  .intro {
+    min-width: 95vw;
+    padding: 0;
+  }
+  .input-group {
+    padding: 10px;
+  }
+  .cont-informacion,
+  .cont-acciones {
+    padding: 10px;
+  }
+  .contenedor {
+    padding: 0 2px;
+  }
+  .cant-boletas button {
+    width: 44px;
+    height: 44px;
+    font-size: 0.95rem;
+  }
+}
