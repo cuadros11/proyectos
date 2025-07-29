@@ -248,6 +248,7 @@
 
         function guardar() {
             limpiarError();
+            limpiarModal();
             const data = {
                 numero: document.getElementById('editNumero').value
                     ? parseInt(document.getElementById('editNumero').value)
@@ -288,6 +289,11 @@
             const citas = getCitas();
             const cita = citas.find(c => c.numero === numero);
             if (!cita) return;
+
+            // Limpiar el modal antes de llenarlo con los datos de la cita
+            limpiarModal();
+
+            // Llenar con los datos de la cita
             document.getElementById('editNumero').value = cita.numero;
             document.getElementById('mascota').value = cita.mascota;
             document.getElementById('propietario').value = cita.propietario;
@@ -297,8 +303,10 @@
             document.getElementById('tipo').value = cita.tipo;
             document.getElementById('motivo').value = cita.motivo;
             document.getElementById('estado').value = cita.estado;
+
             document.getElementById('btnGuardar').textContent = 'Guardar Cambios';
             document.getElementById('exampleModalLabel').textContent = 'Editar Cita';
+
             const modal = new bootstrap.Modal(document.getElementById('exampleModal'));
             modal.show();
         }
@@ -349,14 +357,19 @@
             "Erizo": "img/erizo.jpg",
             "default": "img/default.jpg"
         };
-        
-        document.getElementById('exampleModal').addEventListener(function () {
+
+        function limpiarModal() {
             document.getElementById('citaForm').reset();
             document.getElementById('editNumero').value = '';
             document.getElementById('btnGuardar').textContent = 'Agendar';
             document.getElementById('exampleModalLabel').textContent = 'Agenda tu Cita';
+            document.getElementById('estado').value = 'Abierta'; // Resetear al estado por defecto
             limpiarError();
-        });
+        }
+
+
+        document.getElementById('exampleModal').addEventListener('hidden.bs.modal', limpiarModal);
+        
     </script>
 </body>
 
