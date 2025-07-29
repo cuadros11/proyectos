@@ -349,17 +349,7 @@
             "Erizo": "img/erizo.jpg",
             "default": "img/default.jpg"
         };
-
-        // Limpiar formulario y errores al abrir el modal para agendar una nueva cita
-        document.querySelector('button[data-bs-target="#exampleModal"]').addEventListener('click', function () {
-            document.getElementById('citaForm').reset();
-            document.getElementById('editNumero').value = '';
-            document.getElementById('btnGuardar').textContent = 'Agendar';
-            document.getElementById('exampleModalLabel').textContent = 'Agenda tu Cita';
-            limpiarError();
-        });
-
-        // Limpiar formulario y errores cada vez que se cierra el modal de agendar/editar
+        
         document.getElementById('exampleModal').addEventListener('hidden.bs.modal', function () {
             document.getElementById('citaForm').reset();
             document.getElementById('editNumero').value = '';
