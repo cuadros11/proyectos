@@ -15,7 +15,6 @@
         <h1>Administrador de citas</h1>
 
         <!-- Filtros -->
-
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; margin-bottom: 20px; justify-items: center;">
             <div>
                 <select name="filtroEstado" class="form-select" id="filtroEstado" style="min-width: 150px;">
@@ -44,8 +43,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Agenda tu Cita</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            onclick="limpiarError()"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div id="formError" class="alert alert-danger d-none"></div>
@@ -107,8 +105,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                            onclick="limpiarError()">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <button type="button" class="btn btn-primary" id="btnGuardar">Agendar</button>
                     </div>
                 </div>
@@ -219,36 +216,45 @@
                 card.className = 'col-md-6 col-lg-4';
                 const imgSrc = imagenesMascotas[cita.tipo] || imagenesMascotas["default"];
                 card.innerHTML = `
-        <div class="card h-100">
-            <div class="card-header d-flex align-items-center" style="gap:10px;">
-                <img src="${imgSrc}" alt="${cita.tipo}" style="width:50px;height:50px;object-fit:cover;border-radius:25%;border:1px solid #ccc;">
-                <div>
-                    <strong>Cita #${idx + 1}</strong>
-                    <span class="badge bg-secondary">${cita.estado}</span>
-                </div>
-            </div>
-            <div class="card-body">
-                <p><strong>Mascota:</strong> ${cita.mascota}</p>
-                <p><strong>Propietario:</strong> ${cita.propietario}</p>
-                <p><strong>Teléfono:</strong> ${cita.telefono}</p>
-                <p><strong>Fecha:</strong> ${cita.fecha}</p>
-                <p><strong>Hora:</strong> ${cita.hora}</p>
-                <p><strong>Tipo:</strong> ${cita.tipo}</p>
-                <p><strong>Síntomas:</strong> ${cita.motivo}</p>
-            </div>
-            <div class="card-footer d-flex justify-content-between">
-                <button class="btn btn-primary btn-sm" onclick="editarCita(${cita.numero})">Editar</button>
-                <button class="btn btn-danger btn-sm" onclick="confirmarEliminar(${cita.numero})">Eliminar</button>
-            </div>
-        </div>
-    `;
+                    <div class="card h-100">
+                        <div class="card-header d-flex align-items-center" style="gap:10px;">
+                            <img src="${imgSrc}" alt="${cita.tipo}" style="width:50px;height:50px;object-fit:cover;border-radius:25%;border:1px solid #ccc;">
+                            <div>
+                                <strong>Cita #${idx + 1}</strong>
+                                <span class="badge bg-secondary">${cita.estado}</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Mascota:</strong> ${cita.mascota}</p>
+                            <p><strong>Propietario:</strong> ${cita.propietario}</p>
+                            <p><strong>Teléfono:</strong> ${cita.telefono}</p>
+                            <p><strong>Fecha:</strong> ${cita.fecha}</p>
+                            <p><strong>Hora:</strong> ${cita.hora}</p>
+                            <p><strong>Tipo:</strong> ${cita.tipo}</p>
+                            <p><strong>Síntomas:</strong> ${cita.motivo}</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <button class="btn btn-primary btn-sm" onclick="editarCita(${cita.numero})">Editar</button>
+                            <button class="btn btn-danger btn-sm" onclick="confirmarEliminar(${cita.numero})">Eliminar</button>
+                        </div>
+                    </div>
+                `;
                 container.appendChild(card);
             });
         }
 
-        function guardar() {
-            limpiarError(); // Solo limpiamos errores, no el modal completo
+        function limpiarModal() {
+            document.getElementById('citaForm').reset();
+            document.getElementById('editNumero').value = '';
+            document.getElementById('btnGuardar').textContent = 'Agendar';
+            document.getElementById('exampleModalLabel').textContent = 'Agenda tu Cita';
+            document.getElementById('estado').value = 'Abierta';
+            limpiarError();
+        }
 
+        function guardar() {
+            limpiarError();
+            
             const data = {
                 numero: document.getElementById('editNumero').value
                     ? parseInt(document.getElementById('editNumero').value)
@@ -266,7 +272,7 @@
             const error = validarFormulario(data);
             if (error) {
                 mostrarError(error);
-                return false; // Importante: retornar false para evitar que el modal se cierre
+                return false;
             }
 
             let citas = getCitas();
@@ -277,12 +283,11 @@
             }
             saveCitas(citas);
             mostrarCitas();
-
-            // Limpiar solo después de guardar exitosamente
-            limpiarModal();
-
+            
             const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModal'));
             modal.hide();
+            
+            limpiarModal();
             return true;
         }
 
@@ -292,10 +297,6 @@
             const cita = citas.find(c => c.numero === numero);
             if (!cita) return;
 
-            // Limpiar el modal antes de llenarlo con los datos de la cita
-            limpiarModal();
-
-            // Llenar con los datos de la cita
             document.getElementById('editNumero').value = cita.numero;
             document.getElementById('mascota').value = cita.mascota;
             document.getElementById('propietario').value = cita.propietario;
@@ -332,14 +333,27 @@
             modal.hide();
         };
 
+        // Event listeners
         document.getElementById('filtroEstado').addEventListener('change', mostrarCitas);
         document.getElementById('busqueda').addEventListener('input', mostrarCitas);
-
-        document.getElementById('btnGuardar').addEventListener('click', function (e) {
+        document.getElementById('btnGuardar').addEventListener('click', function(e) {
             e.preventDefault();
             guardar();
         });
 
+        // Limpiar modal cuando se cierra de cualquier forma
+        document.querySelector('#exampleModal .btn-secondary').addEventListener('click', limpiarModal);
+        document.querySelector('#exampleModal .btn-close').addEventListener('click', limpiarModal);
+        document.getElementById('exampleModal').addEventListener('hidden.bs.modal', limpiarModal);
+
+        // Limpiar modal cuando se abre para nueva cita
+        document.getElementById('exampleModal').addEventListener('show.bs.modal', function() {
+            if (!document.getElementById('editNumero').value) {
+                limpiarModal();
+            }
+        });
+
+        // Inicialización
         document.addEventListener('DOMContentLoaded', function () {
             const hoy = new Date();
             const yyyy = hoy.getFullYear();
@@ -362,34 +376,6 @@
             "Erizo": "img/erizo.jpg",
             "default": "img/default.jpg"
         };
-
-        function limpiarModal() {
-            document.getElementById('citaForm').reset();
-            document.getElementById('editNumero').value = '';
-            document.getElementById('btnGuardar').textContent = 'Agendar';
-            document.getElementById('exampleModalLabel').textContent = 'Agenda tu Cita';
-            document.getElementById('estado').value = 'Abierta'; // Resetear al estado por defecto
-            limpiarError();
-        }
-
-        document.getElementById('exampleModal').addEventListener('hidden.bs.modal', function () {
-            // Solo limpiar si no estamos en medio de un guardado exitoso
-            if (!document.getElementById('editNumero').value) {
-                document.getElementById('citaForm').reset();
-                limpiarModal();
-            }
-        });
-
-        // Limpiar el modal cuando se abre para una nueva cita
-        document.getElementById('exampleModal').addEventListener('show.bs.modal', function () {
-            // Solo limpiar si no estamos editando una cita existente
-            if (!document.getElementById('editNumero').value) {
-                limpiarModal();
-            }
-        });
-
-
     </script>
 </body>
-
 </html>
