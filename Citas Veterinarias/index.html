@@ -247,8 +247,8 @@
         }
 
         function guardar() {
-            limpiarError();
-            limpiarModal();
+            limpiarError(); // Solo limpiamos errores, no el modal completo
+
             const data = {
                 numero: document.getElementById('editNumero').value
                     ? parseInt(document.getElementById('editNumero').value)
@@ -262,11 +262,13 @@
                 motivo: document.getElementById('motivo').value.trim(),
                 estado: document.getElementById('estado').value
             };
+
             const error = validarFormulario(data);
             if (error) {
                 mostrarError(error);
-                return;
+                return false; // Importante: retornar false para evitar que el modal se cierre
             }
+
             let citas = getCitas();
             if (document.getElementById('editNumero').value) {
                 citas = citas.map(c => c.numero === data.numero ? data : c);
@@ -275,13 +277,13 @@
             }
             saveCitas(citas);
             mostrarCitas();
-            document.getElementById('citaForm').reset();
-            document.getElementById('editNumero').value = '';
-            document.getElementById('btnGuardar').textContent = 'Agendar';
-            document.getElementById('exampleModalLabel').textContent = 'Agenda tu Cita';
-            limpiarError();
+
+            // Limpiar solo después de guardar exitosamente
+            limpiarModal();
+
             const modal = bootstrap.Modal.getInstance(document.getElementById('exampleModal'));
             modal.hide();
+            return true;
         }
 
         function editarCita(numero) {
@@ -333,7 +335,10 @@
         document.getElementById('filtroEstado').addEventListener('change', mostrarCitas);
         document.getElementById('busqueda').addEventListener('input', mostrarCitas);
 
-        document.getElementById('btnGuardar').onclick = guardar;
+        document.getElementById('btnGuardar').onclick = function (e) {
+            e.preventDefault(); // Prevenir el comportamiento por defecto
+            guardar();
+        };
 
         document.addEventListener('DOMContentLoaded', function () {
             const hoy = new Date();
@@ -359,17 +364,27 @@
         };
 
         function limpiarModal() {
-            document.getElementById('citaForm').reset();
+            // No limpiar el formulario aquí, solo resetear el estado del modal
             document.getElementById('editNumero').value = '';
             document.getElementById('btnGuardar').textContent = 'Agendar';
             document.getElementById('exampleModalLabel').textContent = 'Agenda tu Cita';
-            document.getElementById('estado').value = 'Abierta'; // Resetear al estado por defecto
+            document.getElementById('estado').value = 'Abierta';
             limpiarError();
+
+            // Opcional: si quieres limpiar el formulario solo cuando se cierra manualmente
+            // puedes mover el reset a un evento separado
         }
 
 
-        document.getElementById('exampleModal').addEventListener('hidden.bs.modal', limpiarModal);
+        document.getElementById('exampleModal').addEventListener('hidden.bs.modal', function () {
+            // Solo limpiar si no estamos en medio de un guardado exitoso
+            if (!document.getElementById('editNumero').value) {
+                document.getElementById('citaForm').reset();
+                limpiarModal();
+            }
+        });
         
+
     </script>
 </body>
 
