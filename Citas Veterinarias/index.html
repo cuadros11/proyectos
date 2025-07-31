@@ -12,7 +12,7 @@
 
 <body>
     <div class="container">
-        <h1>Administrador de citas veterinarias</h1>
+        <h1>Administrador de citas</h1>
 
         <!-- Filtros -->
 
@@ -335,10 +335,10 @@
         document.getElementById('filtroEstado').addEventListener('change', mostrarCitas);
         document.getElementById('busqueda').addEventListener('input', mostrarCitas);
 
-        document.getElementById('btnGuardar').onclick = function (e) {
-            e.preventDefault(); // Prevenir el comportamiento por defecto
+        document.getElementById('btnGuardar').addEventListener('click', function (e) {
+            e.preventDefault();
             guardar();
-        };
+        });
 
         document.addEventListener('DOMContentLoaded', function () {
             const hoy = new Date();
@@ -364,17 +364,13 @@
         };
 
         function limpiarModal() {
-            // No limpiar el formulario aquí, solo resetear el estado del modal
+            document.getElementById('citaForm').reset();
             document.getElementById('editNumero').value = '';
             document.getElementById('btnGuardar').textContent = 'Agendar';
             document.getElementById('exampleModalLabel').textContent = 'Agenda tu Cita';
-            document.getElementById('estado').value = 'Abierta';
+            document.getElementById('estado').value = 'Abierta'; // Resetear al estado por defecto
             limpiarError();
-
-            // Opcional: si quieres limpiar el formulario solo cuando se cierra manualmente
-            // puedes mover el reset a un evento separado
         }
-
 
         document.getElementById('exampleModal').addEventListener('hidden.bs.modal', function () {
             // Solo limpiar si no estamos en medio de un guardado exitoso
@@ -383,7 +379,15 @@
                 limpiarModal();
             }
         });
-        
+
+        // Limpiar el modal cuando se abre para una nueva cita
+        document.getElementById('exampleModal').addEventListener('show.bs.modal', function () {
+            // Solo limpiar si no estamos editando una cita existente
+            if (!document.getElementById('editNumero').value) {
+                limpiarModal();
+            }
+        });
+
 
     </script>
 </body>
