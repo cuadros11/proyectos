@@ -12,7 +12,7 @@
 
 <body>
     <div class="container">
-        <h1>Administrador de citas veterinarias</h1>
+        <h1>Administrador de citas </h1>
  
         <!-- Filtros -->
 
@@ -357,7 +357,17 @@
             "Erizo": "img/erizo.jpg",
             "default": "img/default.jpg"
         };
+        function limpiarModal() {
+            document.getElementById('citaForm').reset();
+            document.getElementById('editNumero').value = '';
+            document.getElementById('btnGuardar').textContent = 'Agendar';
+            document.getElementById('exampleModalLabel').textContent = 'Agenda tu Cita';
+            document.getElementById('estado').value = 'Abierta'; // Resetear al estado por defecto
+            limpiarError();
+        }
 
+
+        document.getElementById('exampleModal').addEventListener('hidden.bs.modal', limpiarModal);
         
     </script>
 </body>
