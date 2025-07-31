@@ -46,7 +46,6 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div id="formError" class="alert alert-danger d-none"></div>
                         <form id="citaForm" autocomplete="off">
                             <input type="hidden" id="editNumero">
                             <div class="mb-4">
@@ -105,6 +104,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
+                        <div id="formError" class="alert alert-danger d-none w-100 mb-3"></div>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <button type="button" class="btn btn-primary" id="btnGuardar">Agendar</button>
                     </div>
@@ -171,6 +171,8 @@
             const errorDiv = document.getElementById('formError');
             errorDiv.textContent = mensaje;
             errorDiv.classList.remove('d-none');
+            // Hacer scroll automático al mensaje de error
+            errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         function limpiarError() {
